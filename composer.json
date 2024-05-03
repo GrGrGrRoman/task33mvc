@@ -1,0 +1,21 @@
+{
+    "name": "roman/mvc_tpl_composer",
+    "type": "project",
+    "require": {
+        "cboden/ratchet": "dev-master",
+        "phpmailer/phpmailer": "^6.9.1"
+    },
+    "license": "BSD",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "GrGrGrRoman",
+            "email": "grroman@live.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

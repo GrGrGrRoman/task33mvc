@@ -1,0 +1,50 @@
+<?php
+use App\models\Account;
+?>
+<div class="container">
+    <div class="row">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Проект SF-33. Websocket Chat MVC</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">Главная</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="profile">Профиль</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="chatroom">Чат</a>
+                        </li>
+                        
+                        <?php if (Account::checkAuth()) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout">Выход</a>
+                        </li>
+     
+                        <?php elseif (!Account::checkAuth()) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="register">Регистрация</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="login">Вход</a>
+                        </li>
+                        <?php endif; ?>
+                        
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+    </div>
+</div>

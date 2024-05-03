@@ -1,0 +1,20 @@
+<p>
+<h1 class="h1 text-center">
+<?php
+use App\models\Account;
+echo $title;
+?>
+</h1>
+</p>
+
+<div class="container" style="height: 768px;">
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <?php if (Account::checkAuth()) : ?>
+        <p class="text-center rounded">Вы авторизованы, можете перейти на страницу Чат</p>
+      <?php else : ?>
+        <p class="text-center rounded">Зарегистрируйтесь и войдите в приложение</p>
+      <?php endif; ?>
+    </div>
+  </div>
+</div>

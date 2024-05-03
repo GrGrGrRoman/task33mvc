@@ -1,0 +1,32 @@
+* {
+    font-family: Roboto;
+    font-size: 12px;
+}
+#messages {
+    height: 350px;
+    overflow: auto;
+}
+#chat-room-frm {
+    margin-top: 10px;
+}
+#main {
+    margin-top: 100px;
+}
+.container {
+    width: 922px;
+    height: 465px;
+    left: -512px;
+    gap: 0px;
+    opacity: 0px;
+}
+div {
+    background: #C4C4C4;
+}
+.btn {
+    text-decoration: none;
+    color: black;
+}
+.avatar-photo {
+    width: 30px;
+    height: 30px;
+}

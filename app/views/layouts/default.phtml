@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SF-33 <?= $title ?></title>
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css" >
+    <?= ($_SERVER['REQUEST_URI'] == '/chatroom') ? '<link rel="stylesheet" type="text/css" href="/public/css/chatroom.css">' : ''?>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="/public/js/jquery.js"></script>
+</head>
+
+<body>
+<?php use App\lib\Helpers;?>
+<?php if ($_SERVER['REQUEST_URI'] !== '/chatroom'): ?>
+
+    <div class="container bg-light vh-100">
+        <div class="row">
+            
+            <header class="header">
+                <?php include 'header.phtml'; ?>
+            </header>
+            <?php Helpers::get_alert();?>            
+            
+                <div class="container">
+                    <main>
+
+                        <?=$content; ?>
+
+                    </main>
+                </div>
+
+            <footer class="footer fixed-bottom">
+            <?php include 'footer.phtml'; ?>
+            </footer>            
+
+        </div>
+    </div>
+<?php endif;?>
+
+<?php if ($_SERVER['REQUEST_URI'] == '/chatroom'): ?>
+    <?=$content; ?>
+<?php endif;?>    
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<?php
+
+use App\lib\Helpers;
+
+foreach ($_SESSION['user'] as $key => $user)
+{
+	$userId = $key;
+}
+
+//$userId = array_key_first($_SESSION['user']);
+
+$avatar = './public/pic/def_user.png';
+
+if ($user['avatar'] !== 0)
+{
+    $avatar = './public/pic/' . $userId . '.png';
+}
+?>
+
+<h3 class="h3 my-3 text-center">Профиль пользователя</h3>
+<div class="container">
+    <?php
+    Helpers::get_alert();
+    ?>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <?php
+            // изменение профиля
+            $checked = ($_SESSION['user'][$userId]['hide_email'] == 1) ? 'checked' : '';
+            $hiden = ($_SESSION['user'][$userId]['hide_email'] == 1) ? '(не отображается в чате)' : '(отображается в чате)';
+            ?>
+
+            <div class="my-2">
+                <p><a href="chatroom" type="button" class="btn btn-warning">Вернуться в чат</a></p>
+            </div>
+
+            <div class="card justify-content-center" style="width: 25rem;">
+                <img src="<?= $avatar ?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Email: <?= $user['email'] . ' ' . $hiden; ?></h5>
+
+                    <form action="profile" method="POST" class="card p-2">
+                        <!-- CSRF -->
+                        <input type="hidden" name="token" value="<?= $_COOKIE['PHPSESSID']; ?>">
+                        <div class="field">
+                            <label for="username" class="form-label">Имя пользователя</label>
+                            <input type="text" name="username" class="form-control" value="<?= $user['name']; ?>">
+                        </div>
+                        <br>
+                        <?php if ($user['name'] !== $user['email']) : ?>
+                            <div>
+                                <input type="checkbox" id="hide_email" name="hide_email" value="1" <?= $checked ?>>
+                                <label for="hide_email"> Скрыть email от других пользователей?</label>
+                            </div>
+                        <?php endif; ?>
+                        <br>
+                        <div class="field">
+                            <button type="submit" class="btn btn-warning" id="edit" name="edit">Обновить</button>
+                        </div>
+                    </form>
+
+                    <p class="card-text">Вы можете добавить или изменить имя пользователя, так же при желании Вы можете скрыть отображение email в чате</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="content-wrapper p-1 mb-1">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-header text-center">Изменить аватар</div>
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-8">
+                                    <form action="profileavataredit" method="POST" enctype="multipart/form-data">
+                                        
+                                        <div class="form-group">
+                                            <label>Изображение</label>
+                                            <input class="form-control" type="file" name="img">
+                                        </div>
+                                        <small class="form-text text-muted">
+                                            <p class="mt-1"> Максимальный размер файла: <?php echo MAX_FILE_SIZE / 1000000; ?>Мб.</p>
+                                            <p> Допустимые форматы: <?php echo implode(', ', ALLOWED_TYPES) ?>.</p>
+                                        </small>
+                                        <button type="submit" class="btn btn-sm btn-success">Добавить</button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
