@@ -16,7 +16,7 @@ class AccountController extends Controller
             $_SESSION['errors'][] = 'Заполните поля';
         }
 
-        if (isset($_POST['join']) and $_POST['token'] == $_COOKIE['PHPSESSID']) {
+        if (isset($_POST['join']) and $_POST['token'] == $_COOKIE['PHPSESSID']) {            
             $objUser = new Account;
 
             if (!$objUser->checkLogin($_POST['email'], (string)$_POST['password'])) {

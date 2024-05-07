@@ -56,7 +56,7 @@ class Router
         if ($this->match())
         {
             $controllerFile = CONTROLLER . DIRECTORY_SEPARATOR . ucfirst($this->params['controller']) . 'Controller.php';
-            $className = 'App' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . ucfirst($this->params['controller']) . 'Controller';
+            $className = 'App\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
             if (file_exists($controllerFile))
             {
                 $action = $this->params['action'] . 'Action';

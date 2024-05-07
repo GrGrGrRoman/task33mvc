@@ -59,8 +59,6 @@ class Main
         return $this->createdOn;
     }
 
-
-
     public function saveChatRoom()
     {
         $stmt = $this->dbConn->prepare('INSERT INTO chatrooms VALUES(null, :userid, :msg, :createdOn)');
